@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      containers:
+      - name: rabbitmq
+        image: "rabbitmq:4.0.2-alpine"
+        resources:
+          requests:
+            memory: "128Mi" # lower limit
+            cpu: "250m"
+          limits:
+            memory: "512Mi" # upper limit
+            cpu: "500m"
+        ports:
+          - containerPort: 5672
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq # make sure you use the same name here like it is in your url/service names
+spec:
+  selector:
+    app: rabbitmq
+  ports:
+    - protocol: TCP
+      name: main-port
+      port: 5672
+      targetPort: 5672
