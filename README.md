@@ -8,8 +8,8 @@ It's all written in Go and comprises of below services:
   * listener-service
 
 It's a good place to learn about microservices and deployments. It also introduces working with:
-  * Docker / Docker swarm usiing caddy webserver
+  * Docker / Docker swarm using caddy webserver
   * Kubernetes using nginx webserver
 
 It's running on a docker swamp server in on a linux machine running on Digital Ocean service and the live version can be visited on https://swarm.techiehub.co. 
-It's primarily for learning purposes.
+Please understand that this repo is primarily for learning purposes.
